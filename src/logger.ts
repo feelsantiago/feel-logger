@@ -35,4 +35,26 @@ if (dynamicOptions) {
     init(dynamicOptions);
 }
 
-export const Logger = { init, getWinstonInstance };
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const log = (level: string, message: string): void => {
+    logger.log({ level, message });
+};
+
+const info = (message: string, ...meta: any[]): void => {
+    logger.info(message, meta);
+};
+
+const warning = (message: string, ...meta: any[]): void => {
+    logger.warning(message, meta);
+};
+
+const error = (message: string, ...meta: any[]): void => {
+    logger.error(message, meta);
+};
+
+const debug = (message: string, ...meta: any[]): void => {
+    logger.debug(message, meta);
+};
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+export const Logger = { init, getWinstonInstance, log, info, warning, error, debug };

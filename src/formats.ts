@@ -2,21 +2,48 @@ import Winston from 'winston';
 
 const { format } = Winston;
 const { combine, timestamp, printf, colorize, label, metadata } = format;
+const matchBracketsRegex = /\[|]/g;
 
 type LoggerInfo = Winston.Logform.TransformableInfo & { stack?: string; timestamp?: string; label?: string };
 type LoggerFormat = Winston.Logform.Format;
+type ContextMetaData = { context: string };
 
 /* eslint-disable no-param-reassign */
-const handleMetadata = (data: Record<string, unknown>): string => {
+const handleMetadata = (data: Record<string, unknown>): [string | undefined, string] => {
     const keys = Object.keys(data);
-    return keys.length !== 0 ? JSON.stringify(data) : '';
+    let context: string | undefined;
+    let meta = '';
+
+    if (keys.length > 0) {
+        keys.forEach((key) => {
+            const element = data[key];
+
+            if (typeof element === 'string') {
+                meta = meta.concat(' ', element);
+            } else if (typeof element === 'object') {
+                if (Array.isArray(element)) {
+                    meta = meta.concat(' ', JSON.stringify(element).replace(matchBracketsRegex, ''));
+                } else if (element && 'context' in element) {
+                    context = (element as ContextMetaData).context;
+                } else {
+                    meta = meta.concat(' ', JSON.stringify(element));
+                }
+            }
+        });
+
+        meta = 'Metadata:'.concat(meta);
+    }
+
+    return [context, meta];
 };
 
 const entryFormat = (): LoggerFormat =>
     printf((info: LoggerInfo) => {
-        return `${info.timestamp || new Date().toDateString()} [${info.label || 'LoggerInfoLabel'}] ${info.level}: ${
-            info.message
-        } ${handleMetadata(info.metadata)}`;
+        const [context, meta] = handleMetadata(info.metadata);
+
+        return `${info.timestamp || new Date().toDateString()} [${info.label || 'LoggerInfoLabel'}${
+            context ? ` - ${context}]` : `]`
+        } ${info.level}: ${info.message} ${meta}`;
     });
 
 const transformLevelToUpperCase = (): LoggerFormat =>
@@ -49,7 +76,7 @@ export const defaultFormats = (name?: string): LoggerFormat => {
         transformLevelToUpperCase(),
         label({ label: name || 'Application' }),
         timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
-        metadata({ fillExcept: ['message', 'level', 'timestamp', 'label'] }),
+        metadata({ fillExcept: ['message', 'level', 'timestamp', 'label'], fillWith: ['context'] }),
     );
 };
 
