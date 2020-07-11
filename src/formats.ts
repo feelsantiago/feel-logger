@@ -18,7 +18,9 @@ const handleMetadata = (data: Record<string, unknown>): [string | undefined, str
         keys.forEach((key) => {
             const element = data[key];
 
-            if (typeof element === 'string') {
+            if (key === 'context') {
+                context = element as string;
+            } else if (typeof element === 'string') {
                 meta = meta.concat(' ', element);
             } else if (typeof element === 'object') {
                 if (Array.isArray(element)) {
@@ -31,7 +33,7 @@ const handleMetadata = (data: Record<string, unknown>): [string | undefined, str
             }
         });
 
-        meta = 'Metadata:'.concat(meta);
+        meta = meta.trim().length > 0 ? 'Metadata:'.concat(meta) : meta;
     }
 
     return [context, meta];
