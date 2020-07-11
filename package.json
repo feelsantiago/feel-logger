@@ -2,14 +2,16 @@
     "name": "logger",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "ts-node index.ts",
+        "prepublish": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "types": "dist/index.d.ts",
     "dependencies": {
         "import-from": "^3.0.0",
         "logform": "^2.2.0",

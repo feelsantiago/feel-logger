@@ -9,7 +9,7 @@ export const loadDynamicOptionsModule = (): LoggerOptions | undefined => {
     let options: LoggerOptions | undefined;
 
     if (module && typeof module === 'object') {
-        if ('default' in module) {
+        if (module && 'default' in module) {
             options = (module as TsDefaultModule).default;
         } else {
             options = module as JsDefaultModule;

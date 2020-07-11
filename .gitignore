@@ -5,7 +5,7 @@ node_modules
 .vscode
 
 # ts output file
-out
+dist
 
 # log files
 *.log
