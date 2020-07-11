@@ -7,3 +7,4 @@ Logger.init({
 Logger.getWinstonInstance().info('teste');
 
 export * from './src/logger';
+export * from './src/formats';
