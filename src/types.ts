@@ -13,6 +13,7 @@ interface LoggerConsoleOptions {
 }
 
 interface BaseOptions {
+    name?: string;
     level?: string;
     exitOnError?: boolean;
     handleExceptions?: boolean;

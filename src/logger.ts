@@ -21,7 +21,7 @@ const init = (options?: LoggerOptions): void => {
             level,
             exitOnError,
             handleExceptions,
-            format: defaultFormats(),
+            format: defaultFormats(options?.name || 'Application'),
             transports: defaultTransports(options),
         });
     }

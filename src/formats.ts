@@ -15,6 +15,7 @@ const handleMetadata = (data: Record<string, unknown>): string => {
 
 const entryFormat = (): LoggerFormat =>
     printf((info: LoggerInfo) => {
+        console.log(info);
         return `${info.timestamp || new Date().toDateString()} [${info.label || 'LoggerInfoLabel'}] ${info.level}: ${
             info.message
         } ${handleMetadata(info.metadata)}`;
@@ -44,11 +45,11 @@ const objectHandle = (): LoggerFormat =>
         return info;
     })();
 
-export const defaultFormats = (): LoggerFormat => {
+export const defaultFormats = (name?: string): LoggerFormat => {
     return combine(
         errorHandle(),
         transformLevelToUpperCase(),
-        label({ label: basename(require.main?.filename || 'unknown file') }),
+        label({ label: name || 'Application' }),
         timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
         metadata({ fillExcept: ['message', 'level', 'timestamp', 'label'] }),
     );

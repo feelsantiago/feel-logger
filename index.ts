@@ -1,10 +1,7 @@
 import { Logger } from './src/logger';
 
-Logger.init({
-    file: true,
-});
-
-Logger.getWinstonInstance().info('teste');
+Logger.init();
+Logger.getWinstonInstance().info('as');
 
 export * from './src/logger';
 export * from './src/formats';
