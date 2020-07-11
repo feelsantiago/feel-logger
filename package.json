@@ -1,15 +1,18 @@
 {
-    "name": "logger",
+    "name": "feel-logger",
     "version": "1.0.0",
-    "description": "",
+    "description": "My default winston logger implementation",
     "main": "dist/index.js",
     "scripts": {
         "start": "ts-node index.ts",
-        "prepublish": "tsc",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "prepublish": "tsc"
     },
-    "keywords": [],
-    "author": "",
+    "keywords": [
+        "winston",
+        "logger",
+        "feel"
+    ],
+    "author": "Filipe Santiago",
     "license": "ISC",
     "types": "dist/index.d.ts",
     "dependencies": {
