@@ -12,6 +12,7 @@
     },
     "scripts": {
         "start": "ts-node index.ts",
+        "prepare": "npm run build",
         "prepublish": "tsc"
     },
     "keywords": [
