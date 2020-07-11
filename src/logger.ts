@@ -1,7 +1,7 @@
 import Winston from 'winston';
 import { LoggerOptions } from './types';
-import { getTransports } from './transports';
-import { getDefaultFormats } from './formats';
+import { defaultTransports } from './transports';
+import { defaultFormats } from './formats';
 import { loadDynamicOptionsModule } from './initializer';
 
 let logger: Winston.Logger;
@@ -21,8 +21,8 @@ const init = (options?: LoggerOptions): void => {
             level,
             exitOnError,
             handleExceptions,
-            format: getDefaultFormats(),
-            transports: getTransports(options),
+            format: defaultFormats(),
+            transports: defaultTransports(options),
         });
     }
 };

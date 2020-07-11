@@ -44,7 +44,7 @@ const objectHandle = (): LoggerFormat =>
         return info;
     })();
 
-export const getDefaultFormats = (): LoggerFormat => {
+export const defaultFormats = (): LoggerFormat => {
     return combine(
         errorHandle(),
         transformLevelToUpperCase(),
@@ -54,11 +54,11 @@ export const getDefaultFormats = (): LoggerFormat => {
     );
 };
 
-export const getConsoleFormats = (): LoggerFormat => {
+export const consoleFormats = (): LoggerFormat => {
     return combine(colorize({ all: true }), entryFormat());
 };
 
-export const getFileFormats = (): LoggerFormat => {
+export const fileFormats = (): LoggerFormat => {
     return combine(objectHandle(), entryFormat());
 };
 /* eslint-enable no-param-reassign */

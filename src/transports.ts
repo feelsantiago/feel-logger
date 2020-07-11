@@ -4,7 +4,7 @@ import { join } from 'path';
 
 import { mkdirSync, existsSync } from 'fs';
 import { LoggerOptions } from './types';
-import { getConsoleFormats, getFileFormats } from './formats';
+import { consoleFormats, fileFormats } from './formats';
 
 const createLoggerFolder = (): void => {
     const logsFolderPath = join(process.cwd(), 'logs');
@@ -15,14 +15,14 @@ const dailyRotateFileOptions: DailyRotateFileTransportOptions = {
     filename: '%DATE%.log',
     datePattern: 'YYYY-MM-DD-HH',
     dirname: join(process.cwd(), 'logs'),
-    format: getFileFormats(),
+    format: fileFormats(),
 };
 
 const consoleOptions: Winston.transports.ConsoleTransportOptions = {
-    format: getConsoleFormats(),
+    format: consoleFormats(),
 };
 
-export const getTransports = (options?: LoggerOptions): Winston.transport[] => {
+export const defaultTransports = (options?: LoggerOptions): Winston.transport[] => {
     const transports: Winston.transport[] = [];
 
     if (options && 'file' in options) {
@@ -38,10 +38,6 @@ export const getTransports = (options?: LoggerOptions): Winston.transport[] => {
     transports.push(transport);
 
     if (options && options.transports) {
-        for (const element of options.transports) {
-            element.format = getFileFormats();
-        }
-
         transports.push(...options.transports);
     }
 
