@@ -11,6 +11,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "import-from": "^3.0.0",
         "logform": "^2.2.0",
         "winston": "^3.3.3",
         "winston-daily-rotate-file": "^4.5.0"

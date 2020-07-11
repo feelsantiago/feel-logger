@@ -9,7 +9,7 @@ type LoggerFormat = Winston.Logform.Format;
 
 /* eslint-disable no-param-reassign */
 const handleMetadata = (data: Record<string, unknown>): string => {
-    const keys = Object.keys(metadata);
+    const keys = Object.keys(data);
     return keys.length !== 0 ? JSON.stringify(data) : '';
 };
 

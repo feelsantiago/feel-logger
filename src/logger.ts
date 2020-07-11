@@ -1,11 +1,13 @@
 import Winston from 'winston';
-
 import { LoggerOptions } from './types';
 import { getTransports } from './transports';
 import { getDefaultFormats } from './formats';
+import { loadDynamicOptionsModule } from './initializer';
 
 let logger: Winston.Logger;
 let isInitialized = false;
+
+const dynamicOptions = loadDynamicOptionsModule();
 
 const init = (options?: LoggerOptions): void => {
     if (!isInitialized) {
@@ -28,5 +30,9 @@ const init = (options?: LoggerOptions): void => {
 const getWinstonInstance = (): Winston.Logger => {
     return logger;
 };
+
+if (dynamicOptions) {
+    init(dynamicOptions);
+}
 
 export const Logger = { init, getWinstonInstance };

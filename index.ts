@@ -1,5 +1,4 @@
 import { Logger } from './src/logger';
+import './test';
 
-// Read from file
-Logger.init({ file: true });
-const logger = Logger.getWinstonInstance();
+Logger.getWinstonInstance().info('from index');
