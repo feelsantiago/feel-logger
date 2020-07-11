@@ -1,0 +1,11 @@
+# modules folder
+node_modules
+
+# vs code debug configs
+.vscode
+
+# ts output file
+out
+
+# log files
+*.log
