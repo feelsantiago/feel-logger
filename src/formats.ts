@@ -1,5 +1,4 @@
 import Winston from 'winston';
-import { basename } from 'path';
 
 const { format } = Winston;
 const { combine, timestamp, printf, colorize, label, metadata } = format;
@@ -15,7 +14,6 @@ const handleMetadata = (data: Record<string, unknown>): string => {
 
 const entryFormat = (): LoggerFormat =>
     printf((info: LoggerInfo) => {
-        console.log(info);
         return `${info.timestamp || new Date().toDateString()} [${info.label || 'LoggerInfoLabel'}] ${info.level}: ${
             info.message
         } ${handleMetadata(info.metadata)}`;
