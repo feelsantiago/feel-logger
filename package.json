@@ -1,7 +1,7 @@
 {
     "name": "feel-logger",
-    "version": "2.1.0",
-    "description": "My default winston logger implementation",
+    "version": "2.1.1",
+    "description": "Default winston logger configuration, with console and daily rotate file transports.",
     "main": "dist/index.js",
     "files": [
         "/dist"
@@ -18,7 +18,10 @@
     "keywords": [
         "winston",
         "logger",
-        "feel"
+        "feel",
+        "loggin",
+        "winston-logger",
+        "log"
     ],
     "author": "Filipe Santiago",
     "license": "ISC",
