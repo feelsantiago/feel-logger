@@ -1,14 +1,10 @@
 # Feel Logger
 
----
-
 This is my default configuration for [winston logger](https://github.com/winstonjs/winston).
 
 [![NPM](https://nodei.co/npm/feel-logger.png)](https://nodei.co/npm/feel-logger/)
 
 ## Table of contents
-
----
 
 -   [Motivation](#motivation)
 -   [Quick Start](#quick-start)
@@ -22,15 +18,11 @@ This is my default configuration for [winston logger](https://github.com/winston
 
 ## Motivation
 
----
-
 `Winston` is an incredible and versatile logging library. To simplify the configuration process and keep the logs consistent across projects, i decided to create this package to easily setup winston with my formats and configurations.
 
-This package has two default transports: `Console` and `Dayle Rotate File`;
+This package has two default transports: `Console` and `Dayle Rotate File`.
 
 ## Quick Start
-
----
 
 You just need to import `Logger` and call the `init` method and a `Console` logger will be created.
 
@@ -55,8 +47,6 @@ This will create a `/logs` folder in the project root and store there the logs f
 
 ## Output Format
 
----
-
 The output format is composed by a `timestamp`, a identifier `label`, the log `level`, the log `message` and the associated `metadata`.
 
 ```js
@@ -64,8 +54,6 @@ The output format is composed by a `timestamp`, a identifier `label`, the log `l
 ```
 
 ## Configuration
-
----
 
 The configurations accepted by the Logger are:
 
@@ -81,8 +69,6 @@ The configurations accepted by the Logger are:
 | console         | `WinstonLoggerOptions`            | null                           | overrides default transport options       |
 
 ## Dynamic Initialization
-
----
 
 To make the Logger instance `static` across the application you have to create a `logger.options` file. When the lib is loaded by node it will be search for a configuration file (.js or .ts) in the project. This dynamic initialization overrides `init` method.
 
@@ -124,8 +110,6 @@ export class AwesomeClass {
 
 ## Logger Interface
 
----
-
 The following is the methods for logging:
 
 ```js
@@ -140,8 +124,6 @@ interface LoggerOperations {
 
 ## Logging Context
 
----
-
 If you want to add a context information the the output log you can pass a special metadata called `context` and it will be add to the `label` part of the log.
 
 ```js
@@ -152,8 +134,6 @@ Logger.info('My Awesome Logger', { context: 'MyContext' });
 ```
 
 ## Logger Instance
-
----
 
 If you initialize your `Logger` dynamically, you can create instances of the logger to set a default `context`.
 
@@ -183,8 +163,6 @@ new MyAwesomeClass().log();
 ```
 
 ## Winston Instance
-
----
 
 You can get the `winston` instance object by calling the method:
 
