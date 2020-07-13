@@ -34,7 +34,7 @@ Logger.info('My Awesome Logger!');
 // output: 2020-07-12 13:43:05 [Application] INFO: My Awesome Logger!
 ```
 
-To activate the `Daily Rotate File` just passe a `configuration object` to `init` method.
+To activate the `Daily Rotate File` just pass a `configuration object` to `init` method.
 
 ```js
 import { Logger } from 'feel-logger';
@@ -61,8 +61,8 @@ The configurations accepted by the Logger are:
 | --------------- | --------------------------------- | ------------------------------ | ----------------------------------------- |
 | name            | string                            | Application                    | this will be the `label`                  |
 | level           | string                            | info                           | the log level                             |
-| exitOnError     | false                             | boolean                        |                                           |
-| handleException | false                             | boolean                        |                                           |
+| exitOnError     | boolean                           | false                          |                                           |
+| handleException | boolean                           | false                          |                                           |
 | transports      | `Winston.Transports[]`            | `Console`, `Daily Rotate File` | custom transports to be add to the Logger |
 | file            | boolean                           | false                          | active `Dayle Rotate File` transport      |
 | fileOptions     | `DailyRotateFileTransportOptions` | null                           | overrides default transport options       |
@@ -124,7 +124,7 @@ interface LoggerOperations {
 
 ## Logging Context
 
-If you want to add a context information the the output log you can pass a special metadata called `context` and it will be add to the `label` part of the log.
+If you want to add a context information to the output log you can pass a special metadata called `context` and it will be add to the `label` part of the log.
 
 ```js
 import { Logger } from 'feel-logger';
