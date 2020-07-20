@@ -25,7 +25,7 @@ const consoleOptions: Winston.transports.ConsoleTransportOptions = {
 export const defaultTransports = (options?: LoggerOptions): Winston.transport[] => {
     const transports: Winston.transport[] = [];
 
-    if (options && 'file' in options) {
+    if (options && 'file' in options && options.file) {
         const transport = new DailyRotateFileTransport(
             options.fileOptions ? options.fileOptions : dailyRotateFileOptions,
         );
