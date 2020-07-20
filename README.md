@@ -79,7 +79,7 @@ To make the Logger instance `static` across the application you have to create a
     |   +-- package.json
 ```
 
-The configuration file accepts the same object as the `init` method, but make sure that your `configuration.options.[ts|js]` is inside a `src` folder under the `root` directory and follow the conventions:
+The configuration file accepts the same object as the `init` method, but make sure that your `logger.options.[ts|js]` is inside a `src` folder under the `root` directory and follow the conventions:
 
 ```js
 /* logger.options.js */
