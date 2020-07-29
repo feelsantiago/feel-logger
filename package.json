@@ -1,6 +1,6 @@
 {
     "name": "feel-logger",
-    "version": "2.1.6",
+    "version": "2.1.7",
     "description": "Default winston logger configuration, with console and daily rotate file transports.",
     "main": "dist/index.js",
     "files": [
