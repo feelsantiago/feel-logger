@@ -13,7 +13,7 @@ const createLoggerFolder = (): void => {
 
 const dailyRotateFileOptions: DailyRotateFileTransportOptions = {
     filename: '%DATE%.log',
-    datePattern: 'YYYY-MM-DD-HH',
+    datePattern: 'YYYY-MM-DD',
     dirname: join(process.cwd(), 'logs'),
     format: fileFormats(),
 };
